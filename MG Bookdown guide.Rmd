@@ -73,6 +73,9 @@ FOr convenience all the install commands are below:
 ```{R, eval=FALSE}
 install.packages("bookdown")
 install.packages("webexercises")
+install.packages("tippy")
+#Reticulate to allow use of python in knitr
+install.packages("reticulate")
 #Icons, below code also included in that section in this guide
 install.packages("remotes")
 remotes::install_github("mitchelloharawild/icons")
@@ -233,6 +236,111 @@ To make the MCQs have nice boxes around the text change the webex-radiogroup lab
   border-radius: 0.25em;
 }
 ```
+
+## Tippy tooltips
+
+You can add tooltips into R markdown with the [Tippy R package](https://tippy.john-coene.com/) which uses [Tippy.js](https://atomiks.github.io/tippyjs/).
+
+A tooltip is text that appears when you hover your mouse over an item such as text, an example is below.
+
+<u id='word'>Text</u> 
+
+```{r, echo=FALSE}
+#Tippy tooltips
+tippy::tippy_this(elementId = "word", 
+                  tooltip = "This is the tooltip text",
+                  arrow = TRUE, placement = "bottom")
+```
+
+The below code creates the above:
+
+````{verbatim}
+<u id='word'>Text</u> 
+
+```{r, echo=FALSE}
+#Tippy tooltips
+tippy::tippy_this(elementId = "word", 
+                  tooltip = "This is the tooltip text",
+                  arrow = TRUE, placement = "bottom")
+```
+````
+
+Our normally displayed text is specified in `<u id='ID'>TEXT</u>`. This has various functions.
+
+- `<u></u>`: Underlines TEXT within it.
+- `id=`: Specifies an ID of the TEXT section within `<u></u>`. Important for the next part.
+
+
+The function `tippy:tippy_this()` will add a tooltip to a specified item.
+The options of the function are:
+
+- `elementId`: Element to add the tooltip to via its ID. 
+- `tooltip`: Text to include in the tooltip.
+- `arrow`: Specifies if the tooltip will have an arrow pointing to the text the tooltip refers to.
+- `placement`: Placement of the tooltip relative to the text the tooltip refers to.
+
+Other options are available for `tippy:tippy_this()` based on [Tippy.js props](https://atomiks.github.io/tippyjs/v6/all-props/).
+For an example see how `arrow=` is used above compared to the [Tippy.js arrow prop](https://atomiks.github.io/tippyjs/v6/all-props/#arrow).
+
+### CSS
+
+I would suggest adding the following to your __style.css__ file to increase the text and box size of the tooltip.
+
+```{css, eval=FALSE}
+.tippy-tooltip {
+  font-size: 16px;
+  padding: 3px 5px;
+}
+```
+
+### Multilpe instances
+
+You can have 
+<u id='multiple'>multiple</u> 
+tooltips in one 
+<u id='paragraph'>paragraph</u> 
+. You can even use the same tooltip 
+<u id='multiple'>multiple</u>  
+times but only needing one `tippy_this()` call for each ID.
+
+However, you must have each `tippy_this()` call needed for each __.Rmd__ page on each relevant page.
+I suggest having one code block with all required `tippy_this()` calls for the required page at the bottom of that page.
+
+```{r, echo=FALSE}
+#Tippy tooltips
+tippy::tippy_this(elementId = "multiple", 
+                  tooltip = "More than one",
+                  arrow = TRUE, placement = "bottom")
+tippy::tippy_this(elementId = "paragraph", 
+                  tooltip = "a distinct section of a piece of writing",
+                  arrow = TRUE, placement = "bottom")
+```
+
+Markdown code for the above text is:
+
+````{verbatim}
+You can have 
+<u id='multiple'>multiple</u> 
+tooltips in one 
+<u id='paragraph'>paragraph</u> 
+. You can even use the same tooltip 
+<u id='multiple'>multiple</u>  
+times but only needing one `tippy_this()` call for each ID.
+
+However, you must have each `tippy_this()` call needed for each __.Rmd__ page on each relevant page.
+I suggest having one code block with all required `tippy_this()` 
+calls for the required page at the bottom of that page.
+
+```{r, echo=FALSE}
+#Tippy tooltips
+tippy::tippy_this(elementId = "multiple", 
+                  tooltip = "More than one",
+                  arrow = TRUE, placement = "bottom")
+tippy::tippy_this(elementId = "paragraph", 
+                  tooltip = "a distinct section of a piece of writing",
+                  arrow = TRUE, placement = "bottom")
+```
+````
 
 ## Icons
 
