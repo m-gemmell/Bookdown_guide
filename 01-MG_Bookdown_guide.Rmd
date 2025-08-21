@@ -350,37 +350,25 @@ __Note__: You will only be able to use free icons.
 The below code can be used to add `r icons::icon_style(icons::fontawesome("rocket", style="solid"), fill = "#648fff")`. Colour chosen to work on Day, Sepia, and Night font.
 
 ````{verbatim}
-```{r, echo=FALSE}
-icons::icon_style(icons::fontawesome("rocket", style="solid"), fill = "#648fff")
-```
+`r icons::icon_style(icons::fontawesome("rocket", style="solid"), fill = "#648fff")`
 ````
 
 To add to text do like so:
 
 ````{verbatim}
-A compass (
-```{r, echo=FALSE}
-icons::icon_style(icons::fontawesome("compass", style="solid"), fill = "#648fff")
-```
-) is useful to find north.
+A compass `r icons::icon_style(icons::fontawesome("rocket", style="solid"), fill = "#648fff")` is useful to find north.
 ````
 
 This will produce:
 
-A compass (
-```{r, echo=FALSE}
-icons::icon_style(icons::fontawesome("compass", style="solid"), fill = "#648fff")
-```
-) is useful to find north.
+A compass (`r icons::icon_style(icons::fontawesome("rocket", style="solid"), fill = "#648fff")`) is useful to find north.
 
 ### Ionicons
 
 The below code can be used to add `r icons::icon_style(icons::ionicons("calculator"), fill = "#648fff")`.
 
 ````{verbatim}
-```{r, echo=FALSE}
-icons::icon_style(icons::ionicons("calculator"), fill = "#648fff")
-```
+`r icons::icon_style(icons::ionicons("calculator"), fill = "#648fff"`
 ````
 
 ### Bioicons
@@ -388,9 +376,7 @@ icons::icon_style(icons::ionicons("calculator"), fill = "#648fff")
 The below code can be used to add `r icons::bioicons("dna-7")`.
 
 ````{verbatim}
-```{r, echo=FALSE}
-icons::bioicons("dna-7")
-```
+`r icons::bioicons("dna-7")`
 ````
 
 ### Searching
